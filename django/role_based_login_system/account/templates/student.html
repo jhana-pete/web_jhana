@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        /* Embedded CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+      background-color: skyblue;
+      padding: 20px;
+      text-align: center;
+        }
+        .footer {
+      background-color: skyblue;
+      padding: 19px;
+      text-align: center;
+      margin-top: 5%;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            min-height: 94vh;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .complaint-form {
+            margin-bottom: 20px;
+        }
+
+        .complaint-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .complaint-form input[type="text"],
+        .complaint-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .complaint-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .complaint-form button:hover {
+            background-color: #45a049;
+        }
+
+        .complaint-list {
+            margin-bottom: 20px;
+        }
+
+        .complaint-list h2 {
+            margin-bottom: 10px;
+        }
+
+        .complaint-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .complaint-list th,
+        .complaint-list td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .complaint-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .complaint-list li {
+            margin-bottom: 10px;
+        }
+
+        .fill-complaint-button {
+            text-align: center;
+        }
+
+        .fill-complaint-button a {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+        }
+
+        .fill-complaint-button a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'complaint_form' %}">File a Complaint</a></li>
+            </ul>
+        </div>
+        
+
+        <div class="content">
+            <h1>Welcome, {{ user.username }} your role is student</h1>
+
+            <div class="fill-complaint-button">
+                <a href="{% url 'complaint_form' %}">File a Complaint</a>
+            </div>
+
+            <div class="complaint-list">
+                <h2>Recent Complaints</h2>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                        <th>Submitted Date</th>
+                    </tr>
+                    {% for complaint in complaints %}
+                    <tr>
+                    <td>{{ complaint.title }}</td>
+                    <td>{{ complaint.category }}</td>
+                    <td>{{ complaint.status }}</td>
+                    <td>{{ complaint.description }}</td>
+                    <td>{{ complaint.submitted_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No complaints filed yet.</td>
+                </tr>
+            {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

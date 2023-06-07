@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <style>
+      body {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: skyblue;
+      padding: 18px;
+      text-align: center;
+    }
+    .footer {
+      background-color: skyblue;
+      padding: 19px;
+      text-align: center;
+      margin-top: 34.8%;
+    }
+        form{
+            width: 30%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            
+        }
+        input{
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: none;
+            border: 1px solid grey;
+            outline: none;
+            margin: 5px 0;
+        }
+        
+        input[type="submit"] {
+            background-color: #430aad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        
+        input[type="submit"]:hover {
+            background-color: #430aad;
+        }
+    
+        input[type="text"] {
+          width: 100%;
+        }
+        input[type="password"] {
+          width: 100%;
+        }
+       .pag h1{
+       text-align: center;
+       }  
+       .info{
+            color: darkcyan;
+        }
+        .error{
+            color: red;
+        }
+     </style>
+  </head>
+  <body>
+    {% load static %}
+
+    <div class="header">
+      <img src="{% static 'logo muni.png' %}" alt="Header Image" style="float: left; margin-right: 10px; ">
+      
+      <div class="pag">
+        <h1>User Registration page</h1>
+      </div>
+    </div>
+        
+    
+  <div>  
+      <form  method="post">
+            {% for message in messages %}
+            {% if message.tags %}
+            <p class="{{message.tags}}">{{message}}</p>
+            {% endif %}
+            {% endfor %}  
+                    {% csrf_token %}
+                  <div class="bag">
+                    <label for="username">Username</label>
+                      {{ form.username }}
+                  </div>
+                  #{% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                  {% endif %}
+                  <div class="bag">
+                    <label for="email">Email</label>
+                      {{ form.email}}
+                  </div>
+                  <div class="bag">
+                    <label for="password">Password</label>
+                      {{ form.password1 }}
+                  </div>
+                  <div class="bag">
+                    <label for="password">confirm Password</label>
+                      {{ form.password2 }}
+                  </div>
+                  <div class="">
+                    <label class=""><span class="caption">Admin</span>
+                        {{ form.is_admin }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                  <div class="">
+                    <label class=""><span class="caption">student</span>
+                        {{ form.is_student }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class=""><span class="caption">employee</span>
+                        {{ form.is_employee }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                  <span class="text-error">{{ form.errors }}</span>
+                  <input type="submit"  value="Register" class="">
+                </form>
+              </div>
+              <br>
+              <br>
+            <div class="footer">
+                  <p>This is the Footer</p>
+            </div>
+             
+
+
+    
+  </body>
+</html>

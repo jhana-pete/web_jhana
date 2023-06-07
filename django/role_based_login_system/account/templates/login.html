@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>user login</title>
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: skyblue;
+      padding: 20px;
+      text-align: center;
+    }
+    .footer {
+      background-color: skyblue;
+      padding: 18.5px;
+      text-align: center;
+      margin-top: 15%;
+    }
+      form{
+            width: 30%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input{
+            width: 100%;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: none;
+            border: 1px solid grey;
+            outline: none;
+            margin: 5px 0;
+        }
+        
+        input[type="submit"] {
+            background-color: #430aad;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #430aad;
+        }
+        .rem{
+          padding: 10px;
+        }
+        .info{
+            color: darkcyan;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    {% load static %}
+
+    <div class="header">
+      <img src="{% static 'logo muni.png' %}" alt="Header Image" style="float: left; margin-right: 10px; ">
+      <h3>Welcome To!!!!!!!!!</h3>
+      <h1><marquee>Muni University Student Complaint Management System</marquee></h1>
+    </div>
+    
+        <form action="." method="post">
+          {% for message in messages %}
+            {% if message.tags %}
+            <p class="{{message.tags}}">{{message}}</p>
+            {% endif %}
+          {% endfor %}
+                    {% csrf_token %}
+                  <div class="nam">
+                    <label for="username">Username</label>
+                      {{ form.username }}
+                  </div>
+                  {% if form.username.errors %}
+                      <div class="error">{{ form.username.errors }}</div>
+                  {% endif %}
+                  <div class="pas">
+                    <label for="username">Password</label>
+                    {{ form.password }}
+                  </div>
+                  <div class="rem">
+                    <label class=""><span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                    <span class=""><a href="#" class="forgot-pass">Forgot Password</a></span>
+                  </div>
+
+                  <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+         </form>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+    <div class="footer">
+          <p>This is the Footer</p>
+          <p>This is the Footer</p>
+          
+    </div>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SCMS</title>
+    <style>
+      body {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: skyblue;
+      padding: 60px;
+      text-align: center;
+    }
+    .footer {
+      background-color: skyblue;
+      padding: 33.5px;
+      text-align: center;
+      
+    }
+      .comp {
+        text-align: center;
+        margin-top: 5%;
+      
+      }
+      .ind{
+        padding: 2px;
+      }
+      .log{
+        padding: 20px;
+      }
+      .reg{
+        padding: 20px;
+      }
+     
+    </style>
+  </head>
+  <body>
+    {% load static %}
+
+    <div class="header">
+      <img src="{% static 'logo muni.png' %}" alt="Header Image" style="float: left; margin-right: 10px; ">
+      <h3>Welcome To!!!!!!!!!</h3>
+      <h1><marquee>Muni University Student Complaint Management System</marquee></h1>
+    </div>
+        <div class="comp">
+          <div class="ind" >
+            <label>Log in if you already have registered!</label>
+              <div class="log">
+                <div><button class="btn1"><a href="{% url 'login_view' %}">login</a></button></div>
+              </div>
+            <label>If not register here!</label>
+              <div class="reg">
+                <div><button class="btn1"><a href="{% url 'register' %}">register</a></button></div>
+              </div>
+            </div>  
+        </div>
+        <br>
+        <br>
+      <div class="footer">
+          <p>This is the Footer</p>
+          <p>This is the Footer</p>
+          
+      </div>
+  </body>
+</html>
